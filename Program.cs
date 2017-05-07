@@ -34,11 +34,9 @@ namespace ConsoleApplication1
             menuChoice = int.Parse(Console.ReadLine());
 
             while (menuChoice != 5)
-
             {
                 switch (menuChoice)
                 {
-
                     case 1:
 
                         // Add new employee
@@ -56,18 +54,21 @@ namespace ConsoleApplication1
                         Console.Write("Which employee would you like to remove? ");
                         var employeeName = Console.ReadLine();
 
-                        if (employeeName == e.FirstName)
+                        // This is redundant code, is there a better way?
+                        var employeeFound = HR.Find(employeeName);
+                        if (employeeFound != null)
+               
+
+
                         {
+  
                             Console.Write("Are you sure you want to remove {0}? ", employeeName);
                             var areYouSure = Console.ReadLine();
-
                             if (areYouSure.StartsWith("y"))
                             {
 
                                 HR.Remove(employeeName);
-
                             }
-
                         }
 
                         else
@@ -77,27 +78,36 @@ namespace ConsoleApplication1
                             break;
                         }
 
-                        Console.WriteLine("{0} removed!", employeeName);
+                        // End of redundant code
 
+                        Console.WriteLine("{0} removed!", employeeName);
                         break;
 
                     case 3:
 
                         // Insert some code here
-                        Console.WriteLine("What employee are we changing information for? ");
+                        Console.Write("What employee are we changing information for? ");
                         var whichEmployee = Console.ReadLine();
 
-                        var employeeFound = HR.Find(whichEmployee);
-                        if (employeeFound != null)
+                        // This is redundant code, is there a better way?
+                        var eemployeeFound = HR.Find(whichEmployee);
+                        if (eemployeeFound != null)
+
                         {
                             Console.WriteLine("Employee found!");
                         }
 
-                        else if (employeeFound == null)
+                        else
 
                         {
-                            Console.WriteLine("Employee not found!");
+                            Console.WriteLine("\nEmployee not found!");
+                            Console.WriteLine("Press any key to continue");
+                            Console.ReadKey();
+                            break;
+
                         }
+
+                        // End of redundant code
           
                         Console.WriteLine("\nWhat information would you like to change? ");
                         Console.Write("You can choose from the following: ");
